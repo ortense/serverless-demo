@@ -1,0 +1,39 @@
+service: serverless-demo
+
+provider:
+  name: google
+  runtime: nodejs
+  project: coders-on-beer-and-js
+  credentials: ~/.gcloud/serverless-demo-keyfile.json
+
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+    - keyfile.json
+
+functions:
+  hello:
+    handler: hello
+    events:
+      - http: path
+  create:
+    handler: create
+    events:
+      - http: path
+  survey:
+    handler: survey
+    events:
+      - http: path
+  vote:
+    handler: vote
+    events:
+      - http: path
+  counting:
+    handler: counting
+    events:
+      - http: path
